@@ -1,0 +1,21 @@
+.link {
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    
+}
+.link{color: black;}
+.link:hover {color: red;}
+.footer{
+    background-color: black;
+    color: white;
+}
+.table{
+    padding: auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+.table td{
+    border: 1px solid black;
+}
