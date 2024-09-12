@@ -6,16 +6,53 @@
 }
 .link{color: black;}
 .link:hover {color: red;}
+.li{
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+}
+.li{
+    color: white;
+}
+.li:hover{color: red;}
 .footer{
     background-color: black;
     color: white;
+    padding: 10px;
 }
 .table{
     padding: auto;
     border: 1px solid black;
     border-collapse: collapse;
     text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
 }
 .table td{
     border: 1px solid black;
+}
+.img{
+height: 500px;
+width: 700px;
+}
+.section{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: black;
+}
+.main{
+    margin: 10px;
+}
+.p{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: black;
+}
+.ul{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: black;
+}
+.nav a {
+    margin: 0 5px ;
 }
