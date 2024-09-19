@@ -56,3 +56,64 @@ width: 700px;
 .nav a {
     margin: 0 5px ;
 }
+
+.sectionlunch{
+    display: grid;
+    grid-template-columns: 1fr, 1fr, 1fr;
+    grid-column-gap: 10px;
+}
+
+.dishes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    }
+    
+.dish {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 35px;
+    filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
+    cursor: pointer;
+    text-align: left;
+    }
+
+.dish:hover {
+        border: 2px solid tomato;
+        }
+        
+.dish img {
+        width: 100%;
+        border-radius: 35px;
+        }
+        
+.dish-info {
+        margin-bottom: 10px;
+        }
+        
+ .dish .namelunch, .dish .pricelunch {
+        font-size: 18px;
+        color: black;
+        }
+        
+.dish .volume {
+        color: gray;
+        font-size: 14px;
+        }
+        
+.dish button {
+        background-color: #f1eee9;
+        padding: 10px 30px;
+        border-radius: 10px;
+        cursor: pointer;
+        border: none;
+        width: 100%;
+        }
+        
+.dish:hover button {
+        background-color: tomato;
+        }
+
+.footerlunch{
+    color: gray;
+}  
