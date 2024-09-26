@@ -123,3 +123,23 @@ width: 700px;
     flex-wrap: wrap;
     gap: 15px;
 }
+
+
+@media (max-width: 800px) {
+    div.dishes{
+    grid-template-columns: repeat(2, 1fr);
+    }}
+    
+@media (max-width: 600px) { 
+    section>h2{
+    text-align: center;
+}
+    
+    div.dishes{
+    grid-template-columns: 1fr;
+    }
+}
+ 
+a.active{
+    color: tomato;
+}
