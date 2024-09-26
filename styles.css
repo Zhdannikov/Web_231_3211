@@ -31,9 +31,11 @@
 .table td{
     border: 1px solid black;
 }
+
 .img{
 height: 500px;
 width: 700px;
+
 }
 .section{
     font-family: 'Times New Roman', Times, serif;
@@ -71,6 +73,8 @@ width: 700px;
     }
     
 .dish {
+    display: flex;
+    flex-direction: column;
     background-color: white;
     padding: 30px 40px;
     border-radius: 35px;
@@ -129,18 +133,54 @@ width: 700px;
 @media (max-width: 800px) {
     div.dishes{
     grid-template-columns: repeat(2, 1fr);
-    }}
+    }
+    img {
+        width: 500px;
+        height: auto;
+    }
+}
     
 @media (max-width: 600px) { 
-    section>h2{
+    section h2{
     text-align: center;
-}
+    }
     
     div.dishes{
     grid-template-columns: 1fr;
     }
+    h1 {
+        text-align: center;
+        }
+
+    h2 {
+        text-align: center;
+        }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        }
+        
+    nav a {
+        font-size: calc(1em + 4px);
+        }
+        
+    img {
+        width: 100%;
+        height: auto;
+        }
+        
+    table {
+        font-size: calc(1em - 2px);
+        }
 }
  
 a.active{
     color: tomato;
+}
+
+@media (max-width: 400px) {
+    table {
+    font-size: calc(1em - 4px);
+    }
 }
