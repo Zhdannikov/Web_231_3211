@@ -97,6 +97,55 @@
                     </div>
                 </div>
             </section>
+
+            <form action="https://httpbin.org/post" method="post">
+            <section class="order">
+                <h2 style="text-align: center;">Сделать заказ</h2>
+                <div class="dishesorder">
+                <div>
+                    <h3>Ваш заказ</h3>
+                    <label>Суп</label>
+                    <select name="" id="">
+                        <option value="">--Выберите суп--</option>
+                    </select>
+                    <label>Главное блюдо</label>
+                     <select name="" id="">
+                        <option value="">--Выберите блюдо--</option>
+                    </select>
+                    <label>Напиток</label>
+                    <select name="" id="">
+                        <option value="">--Выберите напиток</option>
+                    </select>
+                    <label>Комментарии к заказу</label>
+                    <textarea name="" id=""></textarea>
+
+                </div>
+                <div>
+                    <h3>Ваши данные</h3>
+                    <label>Имя</label>
+                    <input type="text" required>
+                    <label >Email</label>
+                    <input type="email" required>
+                    <input type="checkbox"checked>
+                    <label>Получать информацию о скидках и акциях</label>
+                    <label>Номер телефона</label>
+                    <input type="text" required>
+                    <label>Адрес доставки</label>
+                    <input type="text" required>
+                    <label class="note"><em>Доставка осуществляется только по Москве</em></label>
+                    <label>Время доставки:</label>
+                    <input type="radio"><label>Как можно скорее</label>
+                    <input type="radio"><label>К указанному времени</label>
+                    <label>Укажите время доставки</label>
+                    <input type="time" min="7:00" max="23:00" step="300">
+                    <label class="note"><em>Доступное время доставки с 7:00 до 23:00</em></label>
+                    <button class="buttonform" type="reset">Сбросить</button>
+                    <button class="buttonform" type="submit">Отправить</button>
+                </div>
+                </div>
+            </section>
+            </form>
+
         </main>
             
             <footer class="footer" id="tellunch">

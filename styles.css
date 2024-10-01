@@ -184,3 +184,32 @@ a.active{
     font-size: calc(1em - 4px);
     }
 }
+
+.dishesorder {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    }
+
+.order label, .order select, .order textarea, .order input {
+        display: block;
+        margin-bottom: 10px; 
+    }
+
+.buttonform{
+    background-color: white;
+    padding: 5px 10px;
+}   
+.note{
+    font-size: 12px;
+} 
+
+.order input{
+    padding: 5px 15px;
+}
+.dishesorder select{
+    padding: 5px 30px;
+}
+.order textarea{
+    padding: 30px 30px;
+}
