@@ -196,10 +196,24 @@ a.active{
         margin-bottom: 10px; 
     }
 
-.buttonform{
+.buttonform1{
     background-color: white;
-    padding: 5px 10px;
+    border: 2px solid black;
+    flex-direction: row;
+    float: left;
+    width: 49%;
+    margin-top: 5px;
+    } 
+    
+.buttonform2{
+    background-color: white;
+    border: 2px solid black;
+    flex-direction: row;
+    float: right;
+    width: 49%;
+    margin-top: 5px;
 }   
+
 .note{
     font-size: 12px;
 } 
