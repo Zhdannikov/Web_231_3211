@@ -77,7 +77,7 @@
                     <div class="dish"> 
                         <img src="Orange.jpg">
                         <p class="pricelunch">120Р</p>
-                        <p class="namelunch">Апельсиноовый сок</p>
+                        <p class="namelunch">Апельсиновый сок</p>
                         <p class="volume">300 мл</p>
                         <button>Добавить</button>
                     </div>
@@ -102,40 +102,48 @@
             <section class="order">
                 <h2 style="text-align: center;">Сделать заказ</h2>
                 <div class="dishesorder">
-                <div>
+                <div class="dishorder">
                     <h3>Ваш заказ</h3>
                     <label>Суп</label>
                     <select name="" id="">
                         <option value="">--Выберите суп--</option>
+                        <option value="Gazpacho">Гаспачо</option>
+                        <option value="Mushroom">Грибной суп-пюре</option>
+                        <option value="Norwegian">Норвежский суп</option>
                     </select>
                     <label>Главное блюдо</label>
                      <select name="" id="">
                         <option value="">--Выберите блюдо--</option>
+                        <option value="Potato">Жаренная картошка с грибами</option>
+                        <option value="Lasagna">Лазанья</option>
+                        <option value="Chops">Котлеты из курицы с картофельным пюре</option>
                     </select>
                     <label>Напиток</label>
-                    <select name="" id="">
+                    <select name="Drink" id="Drink" required>
                         <option value="">--Выберите напиток</option>
+                        <option value="Orange">Апельсиновый сок</option>
+                        <option value="Apple">Яблочный сок</option>
+                        <option value="Carrot">Морковный сок</option>
                     </select>
                     <label>Комментарии к заказу</label>
                     <textarea name="" id=""></textarea>
-
                 </div>
-                <div>
+
+                <div class="dishdata">
                     <h3>Ваши данные</h3>
                     <label>Имя</label>
                     <input type="text" required>
                     <label >Email</label>
                     <input type="email" required>
-                    <input type="checkbox"checked>
-                    <label>Получать информацию о скидках и акциях</label>
+                    <label><input type="checkbox"checked>Получать информацию о скидках и акциях</label>
                     <label>Номер телефона</label>
                     <input type="text" required>
                     <label>Адрес доставки</label>
                     <input type="text" required>
                     <label class="note"><em>Доставка осуществляется только по Москве</em></label>
                     <label>Время доставки:</label>
-                    <input type="radio"><label>Как можно скорее</label>
-                    <input type="radio"><label>К указанному времени</label>
+                    <label><input type="radio" name="radio1" required>Как можно скорее</label>
+                    <label><input type="radio" name="radio1" required>К указанному времени</label>
                     <label>Укажите время доставки</label>
                     <input type="time" min="7:00" max="23:00" step="300">
                     <label class="note"><em>Доступное время доставки с 7:00 до 23:00</em></label>

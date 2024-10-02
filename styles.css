@@ -189,10 +189,10 @@ a.active{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+    margin: 30px;
     }
 
 .order label, .order select, .order textarea, .order input {
-        display: block;
         margin-bottom: 10px; 
     }
 
@@ -212,4 +212,18 @@ a.active{
 }
 .order textarea{
     padding: 30px 30px;
+}
+
+.dishorder{
+    display: flex;
+    flex-direction: column;
+    float: left;
+    width: 49%;
+}
+
+.dishdata{
+    display: flex;
+    flex-direction: column;
+    float: right;
+    width: 49%;
 }
