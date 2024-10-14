@@ -3,7 +3,7 @@ const dishes = [
     keyword:'gazpacho',
     name:'Гаспачо',
     price: 195,
-    category:'soyp',
+    category:'soup',
     count: '350 г',
     image: 'Gazpacho.jpg'
 },
@@ -11,7 +11,7 @@ const dishes = [
     keyword:'Mushroom',
     name:'Грибной суп-пюре',
     price: 185,
-    category:'soyp',
+    category:'soup',
     count: '330 г',
     image: 'Mushroom.jpg'
 },
@@ -19,7 +19,7 @@ const dishes = [
     keyword:'Norwegian',
     name:'Норвежский суп-пюре',
     price: 270,
-    category:'soyp',
+    category:'soup',
     count: '330 г',
     image: 'Norwegian.jpg'
 },
@@ -27,7 +27,7 @@ const dishes = [
     keyword:'Potato',
     name:'Жаренная картошка с грибами',
     price: 150,
-    category:'the main course',
+    category:'main',
     count: '250 г',
     image: 'Potato.jpg'
 },
@@ -35,7 +35,7 @@ const dishes = [
     keyword:'Lasagna',
     name:'Лазанья',
     price: 385,
-    category:'the main course',
+    category:'main',
     count: '310 г',
     image: 'Lasagna.jpg'
 },
@@ -43,7 +43,7 @@ const dishes = [
     keyword:'Chops',
     name:'Котлеты из курицы с картофельным пюре',
     price: 225,
-    category:'the main course',
+    category:'main',
     count: '280 г',
     image: 'Chops.jpg'
 },
@@ -51,7 +51,7 @@ const dishes = [
     keyword:'Orange',
     name:'Апельсиновый сок',
     price: 120,
-    category:'Drinks',
+    category:'drink',
     count: '300 мл',
     image: 'Orange.jpg'
 },
@@ -59,7 +59,7 @@ const dishes = [
     keyword:'Apple',
     name:'Яблочный сок',
     price: 90,
-    category:'Drinks',
+    category:'drink',
     count: '300 мл',
     image: 'Apple.jpg'
 },
@@ -67,7 +67,7 @@ const dishes = [
     keyword:'Carrot',
     name:'Морковный сок',
     price: 110,
-    category:'Drinks',
+    category:'drink',
     count: '300 мл',
     image: 'Carrot.jpg'
 }];

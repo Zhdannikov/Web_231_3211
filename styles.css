@@ -235,9 +235,47 @@ a.active{
     width: 49%;
 }
 
-.dishdata{
+.dishcustomer{
     display: flex;
     flex-direction: column;
     float: right;
     width: 49%;
+}
+
+
+#total-price {
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+#total-price .price-value {
+    font-size: 20px; 
+    display: inline-block;
+
+}
+
+.order-item p {
+    margin: 0; 
+    line-height: 1.2; 
+}
+
+.order-item p + p {
+    margin-bottom: 20px; 
+    width: 300px;
+}
+
+#no-selection-message {
+    display: none; 
+}
+
+
+#no-selection-message {
+    display: block; 
+    margin-bottom: 20px;
+}
+
+#soup-order, #main-order, #drink-order, #total-price-block {
+    display: none; 
 }
