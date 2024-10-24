@@ -100,6 +100,16 @@ document.addEventListener("DOMContentLoaded", () => {
             totalPriceBlock.style.display = 'block';
             orderForm.totalPrice.textContent = `${total}₽`;
         }
+
+        const buttonform1 = document.querySelector('.buttonform1');
+
+        buttonform1.addEventListener('click',() =>{
+            noSelectionMessage.style.display = 'block';
+            soupOrder.style.display = 'none';
+            mainOrder.style.display = 'none';
+            drinkOrder.style.display = 'none';
+            totalPriceBlock.style.display = 'none';
+        })
     };
 
 
