@@ -279,3 +279,27 @@ a.active{
 #soup-order, #main-order, #drink-order, #total-price-block {
     display: none; 
 }
+
+/* Стили кнопок фильтрации */
+.filters button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: green; 
+    background: none;
+    border: none; 
+    border-radius: 5px; 
+    transition: background-color 0.3s; 
+}
+/* Раскодировать для того чтобы появлялась обводка при наведении на кнопку */
+/* .filters button:hover {
+    border: 2px solid green;  
+} */
+
+.filters button.active {
+    background-color: #d2eedc; 
+    color: green; 
+    border-radius: 10px; 
+}
+/* Конец кнопок фильтрации */

@@ -19,19 +19,50 @@
         <main class="main">
             <section id="soup-section">
                 <h2>Выберите суп</h2>
+                <div class="filters">
+                    <button data-kind="fish">рыбный</button>
+                    <button data-kind="meat">мясной</button>
+                    <button data-kind="veg">вегетарианский</button>
+                </div>
                 <div class="dishes"></div>
             </section>
             <section id="main-section">
                 <h2>Выберите главное блюдо</h2>
+                <div class="filters">
+                    <button data-kind="fish">рыбное</button>
+                    <button data-kind="meat">мясное</button>
+                    <button data-kind="veg">вегетарианское</button>
+                </div>
+                <div class="dishes"></div>
+            </section>
+            <section id="salat-section">
+                <h2>Выберите салат или стартер</h2>
+                <div class="filters">
+                    <button data-kind="fish">рыбный</button>
+                    <button data-kind="meat">мясной</button>
+                    <button data-kind="veg">вегетарианский</button>
+                </div>
                 <div class="dishes"></div>
             </section>
             <section id="drink-section">
                 <h2>Выберите напиток</h2>
+                <div class="filters">
+                    <button data-kind="cold">холодный</button>
+                    <button data-kind="hot">горячий</button>
+                </div>
                 <div class="dishes"></div>
             </section>
-            <section id="order-form">
-            <h2>Сделать заказ</h2>
+            <section id="desert-section">  
+                <h2>Выберите десерт</h2>
+                <div class="filters">
+                    <button data-kind="small">маленькая порция</button>
+                    <button data-kind="medium">средняя порция</button>
+                    <button data-kind="big">большая порция</button>
+                </div>
+                <div class="dishes"></div>
+            </section>
 
+            <section id="order-form">
             <form action="https://httpbin.org/post" method="post">
             <section class="order">
                 <h2 style="text-align: center;">Сделать заказ</h2>
@@ -52,6 +83,10 @@
                     <div class="order-item" id="drink-order" style="display: none;">
                         <p><strong>Напиток</strong></p>
                         <p id="selected-drink">Не выбран</p>
+                    </div>
+                    <div class="order-item" id="desert-order" style="display: none;"> 
+                        <p><strong>Десерт</strong></p>
+                        <p id="selected-desert">Не выбран</p>
                     </div>
                     <div class="order-item" id="total-price-block" style="display: none;">
                         <p id="total-price">Стоимость заказа<span class="price-value">0₽</span></p>
