@@ -89,11 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
         desert: null
     };
 
-
-    //     4.Реализуйте подсчет итоговой стоимости для всех выбранных позиций меню.
-    // После блоков с выбранными блюдами должен располагаться блок "Стоимость заказа".
-    // В блоке отображается итоговая стоимость всех блюд. Например, если был выбран только напиток, отобразиться его цена:
-// добавляем переменные
     const updateOrder = () => {
         let total = 0;
         let isAnyDishSelected = false;
@@ -107,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 orderForm[category].textContent = "Не выбрано";
             }
         }
+
 // определение элементов для отображения сообщений и блоков заказа
         const noSelectionMessage = document.getElementById("no-selection-message");
         const soupOrder = document.getElementById("soup-order");
@@ -150,11 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
-
-    //     3. Создайте скрипт, позволяющий выбрать блюдо и добавить его в форму "Сделать заказ".
-    // - При клике на карточку с блюдом, его название и цена должны появляться в разделе формы "Ваш заказ". Блюдо должно отображаться в своей категории.
-    // - Используйте data-атрибут, чтобы найти блюдо в массиве.
-    // обрабатывает события для каждого элемента чтобы обновлять заказ
     document.querySelectorAll(".dish").forEach(dishElement => {
         dishElement.addEventListener("click", (event) => {
             const dishKeyword = dishElement.getAttribute("data-dish");
