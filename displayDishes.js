@@ -60,10 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
 // добавление элемента блюда в нужную секцию
         if (dish.category === "soup") {
              soupSection.appendChild(dishElement);
+        } else if (dish.category === "salat") {
+                salatSection.appendChild(dishElement);
         } else if (dish.category === "main") {
             mainSection.appendChild(dishElement);
-        } else if (dish.category === "salat") {
-            salatSection.appendChild(dishElement);
         } else if (dish.category === "drink") {
             drinkSection.appendChild(dishElement);
         } else if (dish.category === "desert") {  
@@ -74,8 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
     //определение элементов формы заказа
     const orderForm = {
         soup: document.getElementById("selected-soup"),
-        main: document.getElementById("selected-main"),
         salat: document.getElementById("selected-salat"),
+        main: document.getElementById("selected-main-dish"),
         drink: document.getElementById("selected-drink"),
         desert: document.getElementById("selected-desert"), 
         totalPrice: document.querySelector("#total-price .price-value")
@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
 // инициалиируем выбранные блюда
     let selectedDishes = {
         soup: null,
-        main: null,
         salat: null,
+        main: null,
         drink: null,
         desert: null
     };
@@ -106,8 +106,8 @@ document.addEventListener("DOMContentLoaded", () => {
 // определение элементов для отображения сообщений и блоков заказа
         const noSelectionMessage = document.getElementById("no-selection-message");
         const soupOrder = document.getElementById("soup-order");
-        const mainOrder = document.getElementById("main-order");
         const salatOrder = document.getElementById("salat-order");
+        const mainOrder = document.getElementById("main-order");
         const drinkOrder = document.getElementById("drink-order");
         const desertOrder = document.getElementById("desert-order"); 
         const totalPriceBlock = document.getElementById("total-price-block");
@@ -158,3 +158,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
