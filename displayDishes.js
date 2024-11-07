@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     dishes.sort((a, b) => a.name.localeCompare(b.name));
 
 
-    dishes.forEach(dish => { // проходим по каждому объекту в массиве
+    dishes.forEach(dish => { 
         const dishElement = document.createElement("div");// создает новый элемент div для каждого блюда
         dishElement.classList.add("dish");// добавляет класс dish  к новому элементу
         dishElement.setAttribute("data-dish", dish.keyword);// устанавливает арибует data-dish
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const updateOrder = () => {
         let total = 0;
         let isAnyDishSelected = false;
-// обновляем информацию о блюдах если блюдо выбрано то показана информация если нет то показано не выбрано 
+// обновляем информацию
         for (let category in selectedDishes) {
             if (selectedDishes[category]) {
                 orderForm[category].textContent = `${selectedDishes[category].name} ${selectedDishes[category].price}₽`;
