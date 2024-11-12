@@ -1,5 +1,73 @@
-// добавляем обработчик событий и определяем переменные для секций
 document.addEventListener("DOMContentLoaded", () => {
+    const lunchCombos = [ // Возможный комбинации блюд для заказа
+        ["soup", "main", "salat", "drink"],
+        ["soup", "main", "drink"],
+        ["soup", "salat", "drink"],
+        ["main", "salat", "drink"],
+        ["main", "drink"]
+    ];
+
+    // Находим форму на странице и добавляем обработчик события на её отправку
+    const form = document.querySelector("form"); 
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();// Предотвращаем стандартное поведение отправки формы
+
+        // Проверяем состав заказа
+        if (!checkLunchComposition()) {
+            return;
+        }
+
+        form.submit();// Если проверка прошла, отправляем форму
+    });
+
+// Функция для проверки состава заказа
+    const checkLunchComposition = () => {
+        let selectedCategories = Object.keys(selectedDishes).filter(category => selectedDishes[category]); // Извлекаем все категории блюд и фильтруем только те, которые выбраны
+        let isValidCombo = lunchCombos.some(combo => combo.every(item => selectedCategories.includes(item))); // Проверяем, соответствует ли комбинация блюд одной из допустимых
+        
+        // Проверка различных условий и вывод соответствующих сообщений
+        if (selectedCategories.length === 0) {
+            showAlert("Ничего не выбрано. Выберите блюда для заказа");
+            return false;
+        } else if (selectedCategories.includes("desert") && selectedCategories.length === 1) {
+            showAlert("Выберите главное блюдо");
+            return false;
+        } else if (selectedCategories.includes("main") && selectedCategories.includes("salat") && !selectedCategories.includes("drink") && selectedCategories.includes("soup") && selectedCategories.includes("desert")) {
+            showAlert("Выберите напиток");
+            return false;
+        } else if (selectedCategories.includes("soup") && !selectedCategories.includes("main") && !selectedCategories.includes("salat")) {
+            showAlert("Выберите главное блюдо, салат или стартер");
+            return false;
+        } else if (selectedCategories.includes("salat") && !selectedCategories.includes("soup") && !selectedCategories.includes("main")) {
+            showAlert("Выберите суп или главное блюдо");
+            return false;
+        } else if (selectedCategories.includes("drink") && !selectedCategories.includes("main") && !selectedCategories.includes("salat")) {
+            showAlert("Выберите главное блюдо");
+            return false;
+        } else if (!isValidCombo) {
+            showAlert("Выберите все необходимые блюда для заказа");
+            return false;
+        }
+
+        return true;// Если все проверки прошли, возвращаем true
+    };
+
+    // Функция для создания и отображения уведомлений
+    const showAlert = (message) => { 
+        // Создаем элемент уведомления
+        const alertBox = document.createElement("div");
+        alertBox.classList.add("alert"); // Добавляем класс для стилей
+        alertBox.innerHTML = `<p>${message}</p><button>Окей 👌</button>`; // Устанавливаем текст сообщения и кнопки
+        // Добавляем уведомление на страницу
+        document.body.appendChild(alertBox);
+
+        // Добавляем обработчик для кнопки закрытия уведомления
+        const alertButton = alertBox.querySelector("button");
+        alertButton.addEventListener("click", () => {
+            alertBox.remove();
+        });
+    };
+// добавляем обработчик событий и определяем переменные для секций
     const soupSection = document.querySelector("#soup-section .dishes");
     const mainSection = document.querySelector("#main-section .dishes");
     const salatSection = document.querySelector("#salat-section .dishes");
