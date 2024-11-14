@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (selectedCategories.includes("desert") && selectedCategories.length === 1) {
             showAlert("Выберите главное блюдо");
             return false;
-        } else if (selectedCategories.includes("main") && selectedCategories.includes("salat") && !selectedCategories.includes("drink") && selectedCategories.includes("soup") && selectedCategories.includes("desert")) {
+        } else if (selectedCategories.includes("main") && selectedCategories.includes("salat") && !selectedCategories.includes("drink") && selectedCategories.includes("soup")) {
             showAlert("Выберите напиток");
             return false;
         } else if (selectedCategories.includes("soup") && !selectedCategories.includes("main") && !selectedCategories.includes("salat")) {
@@ -210,6 +210,16 @@ document.addEventListener("DOMContentLoaded", () => {
             drinkOrder.style.display = 'none';
             desertOrder.style.display = 'none';  
             totalPriceBlock.style.display = 'none';
+
+            selectedDishes = {
+                soup: null,
+                salat: null,
+                main: null,
+                drink: null,
+                desert: null
+            };
+
+            price = 0;
         })
     };
 
