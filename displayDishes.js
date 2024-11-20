@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     const lunchCombos = [ // Возможный комбинации блюд для заказа
-        ["soup", "main", "salat", "drink"],
-        ["soup", "main", "drink"],
-        ["soup", "salat", "drink"],
-        ["main", "salat", "drink"],
-        ["main", "drink"]
+        ["soup", "main-course", "salad", "drink"],
+        ["soup", "main-course", "drink"],
+        ["soup", "salad", "drink"],
+        ["main-cource", "salad", "drink"],
+        ["main-course", "drink"]
     ];
 
     // Находим форму на странице и добавляем обработчик события на её отправку
@@ -29,19 +29,19 @@ document.addEventListener("DOMContentLoaded", () => {
         if (selectedCategories.length === 0) {
             showAlert("Ничего не выбрано. Выберите блюда для заказа");
             return false;
-        } else if (selectedCategories.includes("desert") && selectedCategories.length === 1) {
+        } else if (selectedCategories.includes("dessert") && selectedCategories.length === 1) {
             showAlert("Выберите главное блюдо");
             return false;
-        } else if (selectedCategories.includes("main") && selectedCategories.includes("salat") && !selectedCategories.includes("drink") && selectedCategories.includes("soup")) {
+        } else if (selectedCategories.includes("main-course") && selectedCategories.includes("salad") && !selectedCategories.includes("drink") && selectedCategories.includes("soup")) {
             showAlert("Выберите напиток");
             return false;
-        } else if (selectedCategories.includes("soup") && !selectedCategories.includes("main") && !selectedCategories.includes("salat")) {
+        } else if (selectedCategories.includes("soup") && !selectedCategories.includes("main-course") && !selectedCategories.includes("salad")) {
             showAlert("Выберите главное блюдо, салат или стартер");
             return false;
-        } else if (selectedCategories.includes("salat") && !selectedCategories.includes("soup") && !selectedCategories.includes("main")) {
+        } else if (selectedCategories.includes("salad") && !selectedCategories.includes("soup") && !selectedCategories.includes("main-course")) {
             showAlert("Выберите суп или главное блюдо");
             return false;
-        } else if (selectedCategories.includes("drink") && !selectedCategories.includes("main") && !selectedCategories.includes("salat")) {
+        } else if (selectedCategories.includes("drink") && !selectedCategories.includes("main-course") && !selectedCategories.includes("salad")) {
             showAlert("Выберите главное блюдо");
             return false;
         } else if (!isValidCombo) {
@@ -105,6 +105,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
+    const loadDishes = async () => {
+        try {
+            const response = await fetch("http://lab7-api.std-900.ist.mospolytech.ru/api/dishes");
+            const data = await response.json();
+            dishes = data;
 
     //Сортировка блюда каждой категории в алфавитном порядке.
     dishes.sort((a, b) => a.name.localeCompare(b.name));
@@ -128,33 +133,42 @@ document.addEventListener("DOMContentLoaded", () => {
 // добавление элемента блюда в нужную секцию
         if (dish.category === "soup") {
              soupSection.appendChild(dishElement);
-        } else if (dish.category === "salat") {
+        } else if (dish.category === "salad") {
                 salatSection.appendChild(dishElement);
-        } else if (dish.category === "main") {
+        } else if (dish.category === "main-course") {
             mainSection.appendChild(dishElement);
         } else if (dish.category === "drink") {
             drinkSection.appendChild(dishElement);
-        } else if (dish.category === "desert") {  
+        } else if (dish.category === "dessert") {  
             desertSection.appendChild(dishElement);
         }
+   
+        dishElement.querySelector(".add").addEventListener("click", () => {
+            selectedDishes[dish.category] = dish;
+            updateOrder();
+        });
     });
+} catch (error) {
+    console.error("Ошибка при загрузке блюд:", error);
+}
+};
 
     //определение элементов формы заказа
     const orderForm = {
         soup: document.getElementById("selected-soup"),
-        salat: document.getElementById("selected-salat"),
-        main: document.getElementById("selected-main-dish"),
+        salad: document.getElementById("selected-salat"),
+        'main-course': document.getElementById("selected-main-dish"),
         drink: document.getElementById("selected-drink"),
-        desert: document.getElementById("selected-desert"), 
+        dessert: document.getElementById("selected-desert"), 
         totalPrice: document.querySelector("#total-price .price-value")
     };
 // инициалиируем выбранные блюда
     let selectedDishes = {
         soup: null,
-        salat: null,
-        main: null,
+        salad: null,
+        'main-course': null,
         drink: null,
-        desert: null
+        dessert: null
     };
 
     const updateOrder = () => {
@@ -235,5 +249,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+    loadDishes();
 });
 
