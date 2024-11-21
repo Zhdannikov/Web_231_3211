@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ["soup", "main-course", "salad", "drink"],
         ["soup", "main-course", "drink"],
         ["soup", "salad", "drink"],
-        ["main-cource", "salad", "drink"],
+        ["main-course", "salad", "drink"],
         ["main-course", "drink"]
     ];
 
