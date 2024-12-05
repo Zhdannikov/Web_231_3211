@@ -24,33 +24,33 @@
                     <div class="combo-column">
                         <div class="combo-row">
                             <div class="combo-item">
-                                <img src="soup.jpg" alt="Суп">
+                                <img src="Images\soup.jpg" alt="Суп">
                                 <p>Суп</p>
                             </div>
                             <div class="combo-item">
-                                <img src="main.jpg" alt="Главное блюдо">
+                                <img src="Images\main.jpg" alt="Главное блюдо">
                                 <p>Главное блюдо</p>
                             </div>
                             <div class="combo-item">
-                                <img src="salat.jpg" alt="Салат">
+                                <img src="Images\salat.jpg" alt="Салат">
                                 <p>Салат</p>
                             </div>
                             <div class="combo-item">
-                                <img src="drink.jpg" alt="Напиток">
+                                <img src="Images\drink.jpg" alt="Напиток">
                                 <p>Напиток</p>
                             </div>
                         </div>
                         <div class="combo-row">
                             <div class="combo-item">
-                                <img src="main.jpg" alt="Главное блюдо">
+                                <img src="Images\main.jpg" alt="Главное блюдо">
                                 <p>Главное блюдо</p>
                             </div>
                             <div class="combo-item">
-                                <img src="salat.jpg" alt="Салат">
+                                <img src="Images\salat.jpg" alt="Салат">
                                 <p>Салат</p>
                             </div>
                             <div class="combo-item">
-                                <img src="drink.jpg" alt="Напиток">
+                                <img src="Images\drink.jpg" alt="Напиток">
                                 <p>Напиток</p>
                             </div>
                         </div>
@@ -58,25 +58,25 @@
                     <div class="combo-column">
                         <div class="combo-row">
                             <div class="combo-item">
-                                <img src="soup.jpg" alt="Суп">
+                                <img src="Images\soup.jpg" alt="Суп">
                                 <p>Суп</p>
                             </div>
                             <div class="combo-item">
-                                <img src="main.jpg" alt="Главное блюдо">
+                                <img src="Images\main.jpg" alt="Главное блюдо">
                                 <p>Главное блюдо</p>
                             </div>
                             <div class="combo-item">
-                                <img src="drink.jpg" alt="Напиток">
+                                <img src="Images\drink.jpg" alt="Напиток">
                                 <p>Напиток</p>
                             </div>
                         </div>
                         <div class="combo-row">
                             <div class="combo-item">
-                                <img src="main.jpg" alt="Главное блюдо">
+                                <img src="Images\main.jpg" alt="Главное блюдо">
                                 <p>Главное блюдо</p>
                             </div>
                             <div class="combo-item">
-                                <img src="drink.jpg" alt="Напиток">
+                                <img src="Images\drink.jpg" alt="Напиток">
                                 <p>Напиток</p>
                             </div>
                         </div>
@@ -84,21 +84,21 @@
                     <div class="combo-column">
                         <div class="combo-row">
                             <div class="combo-item">
-                                <img src="soup.jpg" alt="Суп">
+                                <img src="Images\soup.jpg" alt="Суп">
                                 <p>Суп</p>
                             </div>
                             <div class="combo-item">
-                                <img src="salat.jpg" alt="Салат">
+                                <img src="Images\salat.jpg" alt="Салат">
                                 <p>Салат</p>
                             </div>
                             <div class="combo-item">
-                                <img src="drink.jpg" alt="Напиток">
+                                <img src="Images\drink.jpg" alt="Напиток">
                                 <p>Напиток</p>
                             </div>
                         </div>
                         <div class="combo-row">
                             <div class="combo-item">
-                                <img src="desert.jpg" alt="Десерт">
+                                <img src="Images\desert.jpg" alt="Десерт">
                                 <p>Десерт</p>
                                 <p class="small-note">(Можно добавить к любому заказу)</p>
                             </div>
@@ -153,67 +153,9 @@
 
             <section id="order-form">
             <form action="https://httpbin.org/post" method="post">
-            <section class="order">
-                <h2 style="text-align: center;">Сделать заказ</h2>
-                <div class="dishesorder">
-                <div class="dishorder">
-                    <h3>Ваш заказ</h3>
-                    <div id="no-selection-message" class="order-item">
-                        <p>Ничего не выбрано</p>
-                    </div>
-                    <div class="order-item" id="soup-order" style="display: none;">
-                        <p><strong>Суп</strong></p>
-                        <p id="selected-soup">Не выбран</p>
-                    </div>
-                    <div class="order-item" id="salat-order" style="display: none;">
-                        <p><strong>Салат</strong></p>
-                        <p id="selected-salat">Не выбран</p>
-                    </div>
-                    <div class="order-item" id="main-order" style="display: none;">
-                        <p><strong>Главное блюдо</strong></p>
-                        <p id="selected-main-dish">Не выбрано</p>
-                    </div>
-                    <div class="order-item" id="drink-order" style="display: none;">
-                        <p><strong>Напиток</strong></p>
-                        <p id="selected-drink">Не выбран</p>
-                    </div>
-                    <div class="order-item" id="desert-order" style="display: none;"> 
-                        <p><strong>Десерт</strong></p>
-                        <p id="selected-desert">Не выбран</p>
-                    </div>
-                    <div class="order-item" id="total-price-block" style="display: none;">
-                        <p id="total-price">Стоимость заказа <span class="price-value">0₽</span></p>
-                    </div>                    
-                    <label for="comments">Комментарии к заказу</label>
-                    <textarea id="comments" name="comments"></textarea>
-                </div>
-
-                <div class="dishcustomer">
-                    <h3>Ваши данные</h3>
-                    <label>Имя</label>
-                    <input type="text" required>
-                    <label >Email</label>
-                    <input type="email" required>
-                    <label><input type="checkbox"checked>Получать информацию о скидках и акциях</label>
-                    <label>Номер телефона</label>
-                    <input type="tel" required pattern="^\+?[0-9\s\-\(\)]{7,15}$">
-                    <label>Адрес доставки</label>
-                    <input type="text" required>
-                    <label class="note"><em>Доставка осуществляется только по Москве</em></label>
-                    <label>Время доставки:</label>
-                    <label><input type="radio" name="radio1" required>Как можно скорее</label>
-                    <label><input type="radio" name="radio1" required>К указанному времени</label>
-                    <label>Укажите время доставки</label>
-                    <input type="time" min="7:00" max="23:00" step="300">
-                    <label class="note"><em>Доступное время доставки с 7:00 до 23:00</em></label>
-                    <div class="buttonform">
-                    <button class="buttonform1" type="reset">Сбросить</button>
-                    <button class="buttonform2" type="submit">Отправить</button>
-                    </div>
-                </div>
-                </div>
-            </section>
+            
             </form>
+            </section>
 
         </main>
             
