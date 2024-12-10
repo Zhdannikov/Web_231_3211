@@ -95,9 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 let validCombo = comboOptions.some(option =>
                     option.every(item => chosenCategories.includes(item))
-                ); 
-                
-                //проверка комбинаций комбо
+                ); //проверка комбинаций комбо
+
                 if (!validCombo) {
                     if (!chosenCategories.includes('drink')) {
                         notification = "Выберите напиток";
