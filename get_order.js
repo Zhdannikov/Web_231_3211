@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 nothingSelectedMessage.style.display = 'none';
             }
 
-
+            // Функция для создания карточки блюда
             function TicketsMake(dish) {
                 const ticket = document.createElement('div');
                 ticket.classList.add('flex');
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 return ticket;
             }
-
+            // Функция загрузки блюд из localStorage
             function GetTickets(CurrentElem) {
                 const localStorageIds = [
                     window.localStorage.getItem('soup-selected'),
@@ -76,8 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
             GetTickets(chosenDishesSection);
 
             let FoodPrice = 0;
-            const FoodPriceElements = document.getElementById('total_price');
+            const FoodTotalPriceElements = document.getElementById('total_price');
+            const FoodPriceElements = document.getElementById('food_price');
 
+            // Инициализация элементов выбора
             let ChosenFood = {
                 'soup': null,
                 'main-course': null,
@@ -111,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             SaladLabel.style.display = 'none';
             JuiceLabel.style.display = 'none';
             DessertLabel.style.display = 'none';
+            FoodTotalPriceElements.style.display = 'none';
             FoodPriceElements.style.display = 'none';
 
             EmptyMessage.style.display = '';
@@ -150,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             }
 
+            //Удаление блюда из LocalStorage
             function RemoveDish(dish, ticket) {
                 if (window.localStorage.getItem('soup-selected') === String(dish['id'])) {
                     console.log(FoodPrice);
@@ -335,17 +339,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 ['main-course', 'drink']
             ];
 
-            function checkOrder() {
-                const chosenCategories = Object.keys(ChosenFood).filter(category => ChosenFood[category]);//фильтрует категории, чтобы найти выбранные
+            //Проверка правильности заказа
+            function checkOrder(success = false) {
+                if (success) {
+                    showNotification("Данные успешно отправлены");
+                    return true;
+                }
+            
+                const chosenCategories = Object.keys(ChosenFood).filter(category => ChosenFood[category]); // фильтрует категории, чтобы найти выбранные
                 if (chosenCategories.length === 0) {
                     showNotification("Ничего не выбрано. Выберите блюда для заказа");
                     return false;
-                } //если нет выбранных категорий
-
+                } // если нет выбранных категорий
+            
                 let validCombo = comboOptions.some(option =>
                     option.every(item => chosenCategories.includes(item))
-                ); //проверка комбинаций комбо
-
+                ); // проверка комбинаций комбо
+            
                 if (!validCombo) {
                     if (!chosenCategories.includes('drink')) {
                         showNotification("Выберите напиток");
@@ -359,10 +369,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         showNotification("Некорректный выбор. Проверьте ваш заказ.");
                     }
                     return false;
-                } //для показа уведомлений
-
-                return true; //Проверка успешная
+                } // для показа уведомлений
+            
+                return true; // Проверка успешная
             }
+            
 
             function showNotification(message) {
                 notificationText.textContent = message;
@@ -374,6 +385,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 notificationText.textContent = '';
             });
 
+            //Отправка заказа на сервер
             submitButton.addEventListener('click', (event) => {
                 if (!checkOrder()) {
                     event.preventDefault(); // Не отправляем форму, если заказ некорректен
@@ -387,7 +399,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (document.getElementById('subscribe').value === 'on') {
                         subscribe = true;
                     }
-
+                    // Создаем объект FormData для удобства при отправке запроса
                     const formData = new FormData();
                     formData.append('full_name', document.getElementById('name').value);
                     formData.append('email', document.getElementById('email').value);
@@ -403,9 +415,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     formData.append('drink_id', Number(window.localStorage.getItem('drink-selected')));
                     formData.append('dessert_id', Number(window.localStorage.getItem('dessert-selected')));
 
-                    /*for (let pair of formData.entries()) {
-                        console.log(pair[0] + ', ' + pair[1] + ', ' + typeof pair[1]);
-                    }*/
 
                     fetch('https://edu.std-900.ist.mospolytech.ru/labs/api/orders?api_key=e69fbe1d-3d77-40c8-8f97-4dea13746819', {
                         method: 'POST',
