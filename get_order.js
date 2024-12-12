@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             EmptyMessage.style.display = '';
 
-            function GetOrder(dish) {
+            function GetOrder(dish) {  // выбор блюда пользователем и обновление
                 let GetUpdate = false;
                 if (dish['category'] === 'soup') {
                     UpdateGridElem('soup', dish, ChosenSoup, SoupLabel);
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            function loadFromLocalStorage() {
+            function loadFromLocalStorage() { //загружает информацию о выбранных блюдах
                 const localStorageIds = [
                     window.localStorage.getItem('soup-selected'),
                     window.localStorage.getItem('main-course-selected'),
@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 nothingSelectedMessage.style.display = 'none';
             }
 
-            function UpdateGridElem(category, dish, CurrentElem, LabelElem) {
+            function UpdateGridElem(category, dish, CurrentElem, LabelElem) { // обновляет информацию о выбранном блюде
                 if (ChosenFood[category] !== null) {
                     FoodPrice -= ChosenFood[category]['price'];
                 }
@@ -385,20 +385,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 notificationText.textContent = '';
             });
 
-            //Отправка заказа на сервер
-            submitButton.addEventListener('click', (event) => {
+            submitButton.addEventListener('click', async (event) => {
                 if (!checkOrder()) {
                     event.preventDefault(); // Не отправляем форму, если заказ некорректен
                 } else {
+                    event.preventDefault(); // Предотвращаем стандартное поведение, так как мы используем fetch
+            
                     let delivery_type = 'by_time';
                     if (document.querySelectorAll('input[name="need_time"]:checked')[0].value === 'asap') {
                         delivery_type = 'now';
                     }
-
+            
                     let subscribe = false;
                     if (document.getElementById('subscribe').value === 'on') {
-                        subscribe = true;
+                        subscribe = true; // Используем свойство checked для получения значения
                     }
+            
                     // Создаем объект FormData для удобства при отправке запроса
                     const formData = new FormData();
                     formData.append('full_name', document.getElementById('name').value);
@@ -409,37 +411,73 @@ document.addEventListener('DOMContentLoaded', () => {
                     formData.append('delivery_type', delivery_type);
                     formData.append('delivery_time', document.getElementById('time_choice').value);
                     formData.append('comment', document.getElementById('comment').value);
-                    formData.append('soup_id', Number(window.localStorage.getItem('soup-selected')));
-                    formData.append('main_course_id', Number(window.localStorage.getItem('main-course-selected')));
-                    formData.append('salad_id', Number(window.localStorage.getItem('salad-selected')));
-                    formData.append('drink_id', Number(window.localStorage.getItem('drink-selected')));
-                    formData.append('dessert_id', Number(window.localStorage.getItem('dessert-selected')));
+                    const soupId = Number(window.localStorage.getItem('soup-selected'));
+                    const mainCourseId = Number(window.localStorage.getItem('main-course-selected'));
+                    const saladId = Number(window.localStorage.getItem('salad-selected'));
+                    const drinkId = Number(window.localStorage.getItem('drink-selected'));
+                    const dessertId = Number(window.localStorage.getItem('dessert-selected'));
 
-
-                    fetch('https://edu.std-900.ist.mospolytech.ru/labs/api/orders?api_key=e69fbe1d-3d77-40c8-8f97-4dea13746819', {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Content-Type': 'multipart/form-data'
-                        }
-                    })
-                        .then((response) => response.json())
-                        .then((data) => {
-                            if (data['error']) {
-                                showNotification(data['error']);
-                            } else {
-                                console.log(data);
-                                window.localStorage.removeItem('soup-selected');
-                                window.localStorage.removeItem('main-course-selected');
-                                window.localStorage.removeItem('salad-selected');
-                                window.localStorage.removeItem('drink-selected');
-                                window.localStorage.removeItem('dessert-selected');
-                                showNotification('Спасибо за заказ!');
+                    // Добавляем проверку на существование идентификаторов блюд
+                    if (soupId > 0) formData.append('soup_id', soupId);
+                    if (mainCourseId > 0) formData.append('main_course_id', mainCourseId);
+                    if (saladId > 0) formData.append('salad_id', saladId);
+                    if (drinkId > 0) formData.append('drink_id', drinkId);
+                    if (dessertId > 0) formData.append('dessert_id', dessertId);
+            
+                    try {
+                        const response = await fetch('https://edu.std-900.ist.mospolytech.ru/labs/api/orders?api_key=e69fbe1d-3d77-40c8-8f97-4dea13746819', {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json' // Не указываем Content-Type, чтобы браузер сам определил его
                             }
-                        })
-                        .catch((error) => {
-                            showNotification(error);
-                        })
+                        });
+            
+                        const data = await response.json();
+            
+                        if (data['error']) {
+                            showNotification(data['error']); // Показываем ошибку
+                        } else {
+                            console.log(data);
+                            // Успешно оформленный заказ
+                            showNotification('Спасибо за заказ!');
+
+
+                            ChosenSoup.style.display = 'none';
+                            ChosenMain.style.display = 'none';
+                            ChosenSalad.style.display = 'none';
+                            ChosenJuice.style.display = 'none';
+                            ChosenDessert.style.display = 'none';
+
+                            SoupLabel.style.display = 'none';
+                            MainLabel.style.display = 'none';
+                            SaladLabel.style.display = 'none';
+                            JuiceLabel.style.display = 'none';
+                            DessertLabel.style.display = 'none';
+                            FoodPriceElements.style.display = 'none';
+
+                            EmptyMessage.style.display = '';
+
+                            ChosenFood = {
+                                'суп': null,
+                                'главное блюдо': null,
+                                'салат': null,
+                                'напиток': null,
+                                'десерт': null
+                            };
+
+                            FoodPrice = 0;
+                            
+                            // Удаляем данные из localStorage
+                            window.localStorage.removeItem('soup-selected');
+                            window.localStorage.removeItem('main-course-selected');
+                            window.localStorage.removeItem('salad-selected');
+                            window.localStorage.removeItem('drink-selected');
+                            window.localStorage.removeItem('dessert-selected');
+                        }
+                    } catch (error) {
+                        showNotification('Произошла ошибка при отправке заказа: ' + error.message); // Показываем ошибку при запросе
+                    }
                 }
             });
 
