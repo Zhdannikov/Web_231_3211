@@ -9,13 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const chosenDishesSection = document.querySelectorAll('#chosen_food .dishes_order')[0];
 
             const nothingSelectedMessage = document.querySelector('.nothing_selected');
-            const chosenDishes = document.querySelectorAll('#chosen_food .dishes_order');
             nothingSelectedMessage.style.display = '';
 
-
-            // Проверяем, есть ли выбранные блюда
-            if (chosenDishes.length > 0) {
-                nothingSelectedMessage.style.display = 'none';
+             // Функция для обновления видимости сообщения в зависимости от выбранных блюд
+            function updateNothingSelectedMessage() {
+                const tickets = document.querySelectorAll('.flex');  // Выбираем все карточки блюд
+                nothingSelectedMessage.style.display = tickets.length > 0 ? 'none' : 'block';  // Скрываем ссылку, если есть блюда
             }
 
             // Функция для создания карточки блюда
@@ -148,6 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 FoodPriceElements.textContent = `Стоимость заказа ${FoodPrice}₽`;
                 FoodPriceElements.style.display = 'block';
+                
+                updateNothingSelectedMessage();
 
                 EmptyElements();
 
@@ -209,8 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     FoodPriceElements.style.display = 'none';
                     EmptyMessage.style.display = '';
-                    nothingSelectedMessage.style.display = '';
 
+                    updateNothingSelectedMessage();
                 }
             }
 
@@ -228,18 +229,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         GetOrder(dish);
                     }
                 });
-
-                if (chosenDishes.length > 0) {
-                    nothingSelectedMessage.style.display = 'none';
-                }
             }
 
             loadFromLocalStorage();
-            nothingSelectedMessage.style.display = '';
-
-            if (chosenDishes.length > 0) {
-                nothingSelectedMessage.style.display = 'none';
-            }
 
             function UpdateGridElem(category, dish, CurrentElem, LabelElem) { // обновляет информацию о выбранном блюде
                 if (ChosenFood[category] !== null) {
@@ -289,11 +281,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cards = document.querySelectorAll('.flex');
                 cards.forEach(function (card) {
                     card.parentNode.removeChild(card);
+
+                    updateNothingSelectedMessage();
                 });
-
-                nothingSelectedMessage.style.display = '';
-
-
             });
 
 
@@ -423,7 +413,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (saladId > 0) formData.append('salad_id', saladId);
                     if (drinkId > 0) formData.append('drink_id', drinkId);
                     if (dessertId > 0) formData.append('dessert_id', dessertId);
-            
+                    
+                    updateNothingSelectedMessage();
+
                     try {
                         const response = await fetch('https://edu.std-900.ist.mospolytech.ru/labs/api/orders?api_key=e69fbe1d-3d77-40c8-8f97-4dea13746819', {
                             method: 'POST',

@@ -716,3 +716,16 @@ footer {
     width: 100%; /* Ширина футера по всей странице */
     position: relative; /* Обеспечивает правильное позиционирование */
 }
+.hero-image {
+    background-image: url('https://img.freepik.com/free-photo/sideways-asian-dish-with-copy-space_23-2148242494.jpg?t=st=1734369875~exp=1734373475~hmac=0b552efe3f01fa29c97e8330161aae433da2ccdd39a59203eab0afbe79d669a9&w=1380'); /* Замените на ваше изображение */
+    background-size: cover;
+    background-position: center;
+    min-height: 50vh; 
+    background-color: #333; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
