@@ -81,7 +81,14 @@ class Modal {
             if(response) {
                 form.reset();
                 this.close();
-                console.log('save', response);
+                // Создаем кастомное событие
+                const eventOrderUpdete = new CustomEvent("Order:update", {
+                    detail: {
+                        response,
+                    },
+                });
+                // Вызываем событие
+                window.dispatchEvent(eventOrderUpdete);
                 
                 popup.openPopup('Данные сохранены.');
             }
