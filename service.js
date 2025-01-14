@@ -1,14 +1,15 @@
 class Api {
     constructor() {
         this.key = 'e69fbe1d-3d77-40c8-8f97-4dea13746819';
+        // url не используется, настроен редирект на стороне хоста
         this.url = 'https://edu.std-900.ist.mospolytech.ru';
     }
 
     // запрос списка товаров
     async getItems() {
-        const req = `/exam-2024-1/api/goods?api_key=${this.key}`;
+        const req = `/api/goods?api_key=${this.key}`;
         try {
-            const response = await fetch(this.url + req, {
+            const response = await fetch(req, {
                 method: 'GET',
                 headers: {
                 'Content-Type': 'application/json', // Указываем формат данных
@@ -27,9 +28,9 @@ class Api {
 
     // запрос одного товара
     async getItem(id) {
-        const req = `/exam-2024-1/api/goods/${id}?api_key=${this.key}`;
+        const req = `/api/goods/${id}?api_key=${this.key}`;
         try {
-            const response = await fetch(this.url + req, {
+            const response = await fetch(req, {
                 method: 'GET',
                 headers: {
                 'Content-Type': 'application/json', // Указываем формат данных
@@ -48,9 +49,9 @@ class Api {
 
     // запрос списка заказов
     async getOrders() {
-        const req = `/exam-2024-1/api/orders?api_key=${this.key}`;
+        const req = `/api/orders?api_key=${this.key}`;
         try {
-            const response = await fetch(this.url + req, {
+            const response = await fetch(req, {
                 method: 'GET',
                 headers: {
                 'Content-Type': 'application/json',
@@ -68,9 +69,9 @@ class Api {
     }
 
     async createOrder(formData) {
-        const req = `/exam-2024-1/api/orders`;
+        const req = `/api/orders`;
         try {
-            const response = await fetch(`${this.url}${req}?api_key=${this.key}`, {
+            const response = await fetch(`${req}?api_key=${this.key}`, {
                 method: 'POST',
                 body: formData,
             });
@@ -86,9 +87,9 @@ class Api {
     }
 
     async editOrder(id, formData) {
-        const req = `/exam-2024-1/api/orders/${id}?api_key=${this.key}`
+        const req = `/api/orders/${id}?api_key=${this.key}`
         try {
-            const response = await fetch(this.url + req, {
+            const response = await fetch(req, {
                 method: 'PUT',
                 body: formData,
             });
@@ -104,9 +105,9 @@ class Api {
     }
 
     async deleteOrderById(id) {
-        const req = `/exam-2024-1/api/orders/${id}?api_key=${this.key}`;
+        const req = `/api/orders/${id}?api_key=${this.key}`;
         try {
-            const response = await fetch(this.url + req, {
+            const response = await fetch(req, {
                 method: 'DELETE',
                 headers: {
                 'Content-Type': 'application/json',
