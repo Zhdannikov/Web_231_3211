@@ -1,3 +1,5 @@
+import popup from './popup.js';
+
 class Api {
     constructor() {
         this.key = 'e69fbe1d-3d77-40c8-8f97-4dea13746819';
@@ -82,6 +84,7 @@ class Api {
     
             return await response.json();
         } catch (error) {
+            popup.openPopup('Ошибка при заполнении', 'error');
             console.error('Ошибка при отправке данных:', error.message);
         }
     }
@@ -120,6 +123,7 @@ class Api {
         
             return await response.json();
         } catch (error) {
+            popup.openPopup('Ошибка сервера', 'error');
             console.error('Произошла ошибка:', error.message);
         }
     }

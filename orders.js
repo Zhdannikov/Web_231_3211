@@ -1,5 +1,6 @@
 import api from './service.js';
 import Modal from './modal.js';
+import popup from './popup.js';
 
 class Orders {
     constructor() {
@@ -92,11 +93,13 @@ class Orders {
             this.modalDelete.close();
         });
 
-        submitBtn.addEventListener('click', (e) => {
+        submitBtn.addEventListener('click', async (e) => {
             e.preventDefault();
             this.deleteOrder(this.modalDelete.orderId);
             this.modalDelete.close();
-            window.location.reload();
+            this.orders = await api.getOrders();
+            await this.getOrdersData();
+            this.setOrders();
         });
     }
 
@@ -113,7 +116,10 @@ class Orders {
     }
 
     async deleteOrder(id) {
-        await api.deleteOrderById(id);
+        const res = await api.deleteOrderById(id);
+        if(res) {
+            popup.openPopup('Заказ удален');
+        }
     }
 
     async getOrdersData() {
@@ -152,6 +158,8 @@ class Orders {
     }
 
     setOrders() {
+        this.container.innerHTML = '';
+        
         this.orders.forEach((order, index) => {
             const [year, month, day] = order.delivery_date.split('-'); // Разбиваем строку на части
             const formattedDate = `${day}.${month}.${year}`; // Формируем строку в формате dd.mm.yyyy

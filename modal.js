@@ -1,4 +1,5 @@
 import api from './service.js';
+import popup from './popup.js';
 
 class Modal {
     constructor(modalId) {
@@ -80,6 +81,9 @@ class Modal {
             if(response) {
                 form.reset();
                 this.close();
+                console.log('save', response);
+                
+                popup.openPopup('Данные сохранены.');
             }
         })
 
