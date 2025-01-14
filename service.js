@@ -1,10 +1,7 @@
 class Api {
     constructor() {
         this.key = 'e69fbe1d-3d77-40c8-8f97-4dea13746819';
-        this.apiUrl = 'https://edu.std-900.ist.mospolytech.ru';
-        this.proxyUrl = 'http://localhost:3000';
-
-        this.url = window.location.hostname === '127.0.0.1' ? this.proxyUrl : this.apiUrl;
+        this.url = 'https://edu.std-900.ist.mospolytech.ru';
     }
 
     // запрос списка товаров
@@ -73,7 +70,7 @@ class Api {
     async createOrder(formData) {
         const req = `/exam-2024-1/api/orders`;
         try {
-            const response = await fetch(`${this.apiUrl}${req}?api_key=${this.key}`, {
+            const response = await fetch(`${this.url}${req}?api_key=${this.key}`, {
                 method: 'POST',
                 body: formData,
             });
