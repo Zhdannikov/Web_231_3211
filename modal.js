@@ -76,27 +76,12 @@ class Modal {
             
             const formElem = e.target; // Получаем форму            
             const formData = new FormData(formElem);
-            const selector = modalView.querySelector('.js-modal-time');
-            formData.append('delivery_interval', selector.value);            
-
-            const [year, month, day] = formData.get('delivery_date').split('-'); // Разбиваем строку на части
-            const formattedDate = `${day}.${month}.${year}`; // Формируем строку в формате dd.mm.yyyy
-            formData.delete('delivery_date');
-            formData.append('delivery_date', formattedDate);
-            
 
             const response = await api.editOrder(this.orderId, formData);
             if(response) {
                 form.reset();
                 this.close();
-                // Создаем кастомное событие
-                const eventOrderUpdete = new CustomEvent("Order:update", {
-                    detail: {
-                        response,
-                    },
-                });
-                // Вызываем событие
-                window.dispatchEvent(eventOrderUpdete);
+                console.log('save', response);
                 
                 popup.openPopup('Данные сохранены.');
             }
@@ -114,8 +99,6 @@ class Modal {
             modalView.querySelector('.modal__field_phone').querySelector('input').value = data.phone;
             modalView.querySelector('.modal__field_email').querySelector('input').value = data.email;
             modalView.querySelector('.modal__field_adress').querySelector('input').value = data.adress;
-            modalView.querySelector('.modal__field_d-date').querySelector('input').value =  `${year}-${month}-${day}`;
-            modalView.querySelector('.modal__field_d-time').querySelector('select').value = data.delivery_interval;
             modalView.querySelector('.modal__field_comment').querySelector('textarea').value = data.comment;
         } else {
             modalView.classList.remove('modal-view_edit');
