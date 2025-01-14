@@ -76,6 +76,14 @@ class Modal {
             
             const formElem = e.target; // Получаем форму            
             const formData = new FormData(formElem);
+            const selector = modalView.querySelector('.js-modal-time');
+            formData.append('delivery_interval', selector.value);            
+
+            const [year, month, day] = formData.get('delivery_date').split('-'); // Разбиваем строку на части
+            const formattedDate = `${day}.${month}.${year}`; // Формируем строку в формате dd.mm.yyyy
+            formData.delete('delivery_date');
+            formData.append('delivery_date', formattedDate);
+            
 
             const response = await api.editOrder(this.orderId, formData);
             if(response) {
